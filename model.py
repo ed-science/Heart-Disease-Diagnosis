@@ -37,15 +37,15 @@ clf.fit(X_train, Y_train)
 # Testing model accuracy. Average is taken as test set is very small hence accuracy varies a lot everytime the model is trained
 acc = 0
 acc_binary = 0
-for i in range(0, 20):
+for _ in range(20):
     Y_hat = clf.predict(X_test)
     Y_hat_bin = Y_hat>0
     Y_test_bin = Y_test>0
     acc = acc + accuracy_score(Y_hat, Y_test)
     acc_binary = acc_binary +accuracy_score(Y_hat_bin, Y_test_bin)
 
-print("Average test Accuracy:{}".format(acc/20))
-print("Average binary accuracy:{}".format(acc_binary/20))
+print(f"Average test Accuracy:{acc / 20}")
+print(f"Average binary accuracy:{acc_binary / 20}")
 
 # Saving the trained model for inference
 model_path = os.path.join(root, 'models/rfc.sav')
